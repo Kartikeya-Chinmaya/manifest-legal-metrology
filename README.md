@@ -1,8 +1,10 @@
 # MANIFEST — Legal Metrology Compliance Scanner
 
-UI mockups for **MANIFEST**, a Legal Metrology e-commerce compliance scanner — plus a working demo (`app.html` + `server.js`) that runs the same four-screen flow against a real LLM.
+UI mockups for **MANIFEST**, a Legal Metrology e-commerce compliance scanner — plus a working demo (`app.html`) that runs the same four-screen flow against a real LLM.
 
-## Running the working demo
+**Live:** https://manifest-legal-metrology.vercel.app
+
+## Running the working demo locally
 
 The demo calls the Groq API to extract the 7 mandatory declarations from pasted listing text and render a real verdict.
 
@@ -16,7 +18,11 @@ The demo calls the Groq API to extract the 7 mandatory declarations from pasted 
    ```
 3. Open `http://localhost:8787` in a browser, paste a product listing's text, and click **Run scan**.
 
-The server (`server.js`) is the only thing that reads `GROQ_API_KEY` — it proxies the Groq call and the key never reaches the browser. `.env.local` is gitignored and must never be committed.
+`GROQ_API_KEY` is read server-side only — never sent to the browser. Locally that's `server.js`; in production it's the `api/scan.js` Vercel serverless function, both backed by the shared logic in `lib/groq.js`. `.env.local` is gitignored and must never be committed; on Vercel the key is stored as an encrypted project environment variable instead.
+
+## Deployment
+
+Deployed on Vercel as a static site (`app.html`, `_ds/`, the `.dc.html` mockups) plus one serverless function (`api/scan.js`). `vercel.json` pins `"framework": null` so Vercel serves it as a plain static + functions project instead of auto-wrapping `server.js` as a single Lambda (which broke static asset paths). `server.js` itself is excluded from the deployment via `.vercelignore` — it's local-dev-only.
 
 ## Screens
 
