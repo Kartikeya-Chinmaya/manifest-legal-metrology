@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MANIFEST — Legal Metrology Scanner</title>
+<link rel="stylesheet" href="_ds/manifest-design-system-e5cbed40-2e38-4f00-922e-026be492e24d/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/manifest-design-system-e5cbed40-2e38-4f00-922e-026be492e24d/tokens/colors.css">
+<link rel="stylesheet" href="_ds/manifest-design-system-e5cbed40-2e38-4f00-922e-026be492e24d/tokens/typography.css">
+<link rel="stylesheet" href="_ds/manifest-design-system-e5cbed40-2e38-4f00-922e-026be492e24d/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/manifest-design-system-e5cbed40-2e38-4f00-922e-026be492e24d/tokens/borders.css">
+<link rel="stylesheet" href="_ds/manifest-design-system-e5cbed40-2e38-4f00-922e-026be492e24d/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/manifest-design-system-e5cbed40-2e38-4f00-922e-026be492e24d/tokens/texture.css">
+<link rel="stylesheet" href="_ds/manifest-design-system-e5cbed40-2e38-4f00-922e-026be492e24d/tokens/motion.css">
+<link rel="stylesheet" href="_ds/manifest-design-system-e5cbed40-2e38-4f00-922e-026be492e24d/tokens/utilities.css">
+<link rel="stylesheet" href="_ds/manifest-design-system-e5cbed40-2e38-4f00-922e-026be492e24d/styles.css">
+<script src="_ds/manifest-design-system-e5cbed40-2e38-4f00-922e-026be492e24d/assets/mf-burn-edge.js"></script>
+<script src="https://unpkg.com/lucide@0.544.0/dist/umd/lucide.min.js"></script>
+<style>
+  body{margin:0;background:var(--steel-200);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px 20px;box-sizing:border-box}
+  .plate{width:1180px;max-width:100%;box-sizing:border-box;padding:72px 64px;display:flex;align-items:center;justify-content:center}
+  .screen{display:none;width:100%;flex-direction:column;align-items:center;gap:30px}
+  .screen.active{display:flex}
+  .hairline{display:flex;align-items:center;gap:16px;width:100%}
+  .hairline span.rule{flex:1;height:0;border-top:1px dashed var(--ink-900);opacity:.55}
+  .caseband{font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-800);white-space:nowrap}
+  .panel{position:relative;width:100%;max-width:660px;background:var(--steel-300);border:1px solid var(--ink-900);box-shadow:var(--shadow-punch)}
+  .panel .corner{position:absolute;width:11px;height:11px;border-color:var(--pending-amber);border-style:solid}
+  .c-tl{top:8px;left:8px;border-width:2px 0 0 2px}
+  .c-tr{top:8px;right:8px;border-width:2px 2px 0 0}
+  .c-bl{bottom:8px;left:8px;border-width:0 0 2px 2px}
+  .c-br{bottom:8px;right:8px;border-width:0 2px 2px 0}
+  .panel-head{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 28px;height:38px;border-bottom:1px dotted var(--steel-600)}
+  .panel-head .k{font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-900)}
+  .panel-head .v{font-family:var(--font-mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--steel-700)}
+  .rows{padding:6px 28px 14px}
+  .row{display:flex;align-items:baseline;gap:12px;min-height:44px;padding:8px 0;opacity:.14;transition:opacity 160ms cubic-bezier(.2,0,.3,1)}
+  .row.shown{opacity:1}
+  .row.bad{padding:8px;margin:0 -8px;background:var(--case-red-wash)}
+  .row .ic{width:15px;height:15px;flex:0 0 auto;align-self:center}
+  .row .label{font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--steel-700);white-space:nowrap}
+  .row.bad .label{color:var(--case-red-dark)}
+  .row .fill{flex:1;height:0;border-bottom:1px dotted var(--steel-600);transform:translateY(-3px);min-width:12px}
+  .row.bad .fill{border-bottom-color:var(--case-red)}
+  .row .val{font-family:var(--font-mono);font-size:13px;letter-spacing:0.02em;font-variant-numeric:tabular-nums;color:var(--ink-800);text-align:right}
+  .row.bad .val{font-weight:700;text-transform:uppercase;color:var(--case-red)}
+  .rowdiv{height:0;border-top:1px dotted var(--steel-600)}
+  .bar{display:flex;gap:4px;width:100%;max-width:620px}
+  .bar span{flex:1;height:6px;opacity:.14;transition:opacity 160ms cubic-bezier(.2,0,.3,1)}
+  .bar span.shown.pass{opacity:1;background:var(--verified-green)}
+  .bar span.shown.fail{opacity:1;background:var(--case-red)}
+  .progress{display:flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:13px;letter-spacing:0.16em;text-transform:uppercase;font-variant-numeric:tabular-nums;color:var(--steel-600)}
+  .progress .dot{width:6px;height:6px;animation:mf-blink 1s steps(1,end) infinite;background-color:#FFAE22}
+  .progress .n{color:var(--ink-800);font-weight:600}
+  .dropzone{position:relative;width:100%;max-width:760px;background:var(--steel-300);border:1px solid var(--ink-900);box-shadow:var(--shadow-punch);padding:36px 40px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:18px}
+  .dropzone textarea{width:100%;min-height:140px;resize:vertical;box-sizing:border-box;background:var(--paper-100);border:1px solid var(--steel-500);padding:14px 16px;font-family:var(--font-mono);font-size:13px;color:var(--ink-900);line-height:1.5}
+  .dropzone textarea:focus{outline:2px solid var(--pending-amber);outline-offset:1px}
+  .dz-title{font-family:var(--font-mono);font-size:20px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-900);text-align:center}
+  .dz-hint{margin:0;max-width:560px;text-align:center;font-family:var(--font-sans);font-size:13px;line-height:1.5;color:var(--ink-700)}
+  .btn{font-family:var(--font-mono);font-size:13px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--steel-050);background:var(--ink-900);border:1px solid var(--ink-900);padding:12px 28px;cursor:pointer;box-shadow:var(--shadow-punch)}
+  .btn:hover{background:var(--ink-700)}
+  .btn:disabled{opacity:.5;cursor:default}
+  .btn.ghost{background:transparent;color:var(--ink-900)}
+  .err{color:var(--case-red-dark);font-family:var(--font-sans);font-size:13px;text-align:center;max-width:560px}
+  .stamp{padding:6px 0 2px}
+  .stamp-inner{display:inline-block;transform:rotate(-4.5deg);filter:url(#mf-burn-edge);opacity:.9;mix-blend-mode:multiply}
+  .stamp-box{padding:5px}
+  .stamp-box.fail{border:3.5px solid var(--case-red)}
+  .stamp-box.pass{border:3.5px solid var(--verified-green)}
+  .stamp-box-in{border:1px solid;padding:12px 26px 14px;display:flex;flex-direction:column;align-items:center;gap:5px}
+  .stamp-box.fail .stamp-box-in{border-color:var(--case-red)}
+  .stamp-box.pass .stamp-box-in{border-color:var(--verified-green)}
+  .stamp-title{font-family:var(--font-display);font-size:38px;line-height:.92;letter-spacing:0.05em;text-transform:uppercase}
+  .stamp-box.fail .stamp-title{color:var(--case-red)}
+  .stamp-box.pass .stamp-title{color:var(--verified-green)}
+  .stamp-sub{font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase}
+  .stamp-box.fail .stamp-sub{color:var(--case-red)}
+  .stamp-box.pass .stamp-sub{color:var(--verified-green)}
+  .summary{margin:0;font-family:var(--font-sans);font-size:15px;line-height:1.5;color:var(--ink-900);text-align:center}
+</style>
+</head>
+<body class="mf-plate">
+<div class="plate">
+
+  <!-- SCREEN 1: INTAKE -->
+  <section class="screen active" id="screen-intake" style="max-width:760px;gap:44px">
+    <div class="hairline"><span class="rule"></span><span class="caseband">CASE FILE // LEGAL METROLOGY AUDIT</span><span class="rule"></span></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:18px">
+      <h1 class="mf-burn" style="margin:0;font-size:100px">MANIFEST</h1>
+      <p style="margin:0;font-family:var(--font-mono);font-size:17px;letter-spacing:0.02em;color:var(--ink-800)">Is this listing even legal?</p>
+    </div>
+    <div class="dropzone">
+      <div class="dz-title">Paste a listing's text</div>
+      <span style="width:100%;height:0;border-top:1px dotted var(--steel-600)"></span>
+      <textarea id="listing-input" placeholder="Paste the product title, bullet points, and description exactly as they appear on the listing page…"></textarea>
+      <p class="dz-hint">Checks 7 mandatory declarations under Legal Metrology (Packaged Commodities) Rules, 2011</p>
+      <button class="btn" id="scan-btn">Run scan</button>
+      <p class="err" id="intake-err" style="display:none"></p>
+    </div>
+  </section>
+
+  <!-- SCREEN 2: SCANNING -->
+  <section class="screen" id="screen-scanning" style="max-width:620px;gap:36px">
+    <div class="hairline"><span class="rule"></span><span class="caseband">CASE FILE // LEGAL METROLOGY AUDIT</span><span class="rule"></span></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:-14px">
+      <h1 class="mf-burn" style="margin:0;font-size:44px">SCANNING</h1>
+      <p style="margin:0;font-family:var(--font-mono);font-size:13px;letter-spacing:0.02em;color:var(--ink-800)">Reading listing · CASE <span id="scan-case">—</span></p>
+    </div>
+    <div class="panel">
+      <span class="corner c-tl"></span><span class="corner c-tr"></span><span class="corner c-bl"></span><span class="corner c-br"></span>
+      <div class="panel-head"><span class="k">Mandatory declarations</span><span class="v">R-6(1) PACKAGED</span></div>
+      <div class="rows" id="scan-rows"></div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:12px;width:100%">
+      <div class="bar" id="scan-bar"></div>
+      <div class="progress"><span class="dot"></span><span class="n" id="scan-progress">0 of 7 checked</span></div>
+    </div>
+  </section>
+
+  <!-- SCREEN 3/4: VERDICT -->
+  <section class="screen" id="screen-verdict" style="max-width:660px;gap:30px">
+    <div class="hairline"><span class="rule"></span><span class="caseband">CASE FILE // LEGAL METROLOGY AUDIT</span><span class="rule"></span></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+      <h1 class="mf-burn" style="margin:0;font-size:35px">MANIFEST</h1>
+      <p style="margin:0;font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-800)">CASE <span id="verdict-case">—</span> · <span id="verdict-date">—</span></p>
+    </div>
+    <div class="stamp">
+      <div class="stamp-inner">
+        <div class="stamp-box" id="stamp-box">
+          <div class="stamp-box-in">
+            <span class="stamp-title" id="stamp-title">—</span>
+            <span class="stamp-sub" id="stamp-sub">—</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel">
+      <span class="corner c-tl"></span><span class="corner c-tr"></span><span class="corner c-bl"></span><span class="corner c-br"></span>
+      <div class="panel-head"><span class="k">Mandatory declarations</span><span class="v">Extracted value</span></div>
+      <div class="rows" id="verdict-rows"></div>
+    </div>
+    <p class="summary" id="verdict-summary"></p>
+    <button class="btn ghost" id="new-scan-btn">← New scan</button>
+  </section>
+
+</div>
+
+<script>
+const FIELDS_ORDER = ['manufacturer','netQuantity','mrp','unitSalePrice','mfgDate','customerCare','countryOfOrigin'];
+
+function el(tag, cls, html) { const e = document.createElement('div'); if (cls) e.className = cls; if (html !== undefined) e.innerHTML = html; return e; }
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function buildRow(field, forVerdict) {
+  const row = document.createElement('div');
+  row.className = 'row' + (forVerdict ? ' shown' : '') + (forVerdict && !field.found ? ' bad' : '');
+  const icon = forVerdict
+    ? `<span class="ic" data-lucide="${field.found ? 'check' : 'triangle-alert'}" style="color:${field.found ? 'var(--verified-green)' : 'var(--case-red)'}"></span>`
+    : '';
+  const status = forVerdict
+    ? `<span class="val">${field.found ? escapeHtml(field.value || '') : 'not found'}</span>`
+    : `<span class="val" style="font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:${field.found ? 'var(--verified-green)' : 'var(--case-red)'}">${field.found ? 'Found' : 'Not found'}</span>`;
+  row.innerHTML = `${icon}<span class="label">${field.label}</span><span class="fill"></span>${status}`;
+  return row;
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function runLucide() {
+  if (window.lucide) window.lucide.createIcons({ nameAttr: 'data-lucide', attrs: { width: 15, height: 15, 'stroke-width': 2.5 } });
+}
+
+async function runScan(listing) {
+  const err = document.getElementById('intake-err');
+  err.style.display = 'none';
+  const btn = document.getElementById('scan-btn');
+  btn.disabled = true;
+  try {
+    const res = await fetch('/api/scan', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ listing })
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Scan failed');
+    await playScanning(data);
+    showVerdict(data);
+  } catch (e) {
+    err.textContent = e.message || 'Something went wrong.';
+    err.style.display = 'block';
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+function playScanning(data) {
+  return new Promise(resolve => {
+    document.getElementById('scan-case').textContent = data.caseId;
+    const rowsWrap = document.getElementById('scan-rows');
+    const barWrap = document.getElementById('scan-bar');
+    rowsWrap.innerHTML = '';
+    barWrap.innerHTML = '';
+    document.getElementById('scan-progress').textContent = '0 of 7 checked';
+
+    const rowEls = [], barEls = [];
+    data.fields.forEach((f, i) => {
+      const row = buildRow(f, false);
+      rowsWrap.appendChild(row);
+      rowEls.push(row);
+      if (i < data.fields.length - 1) rowsWrap.appendChild(el('rowdiv', 'rowdiv'));
+
+      const seg = document.createElement('span');
+      barWrap.appendChild(seg);
+      barEls.push(seg);
+    });
+
+    showScreen('screen-scanning');
+
+    let shown = 0;
+    const step = () => {
+      if (shown >= data.fields.length) {
+        setTimeout(resolve, 500);
+        return;
+      }
+      const f = data.fields[shown];
+      rowEls[shown].classList.add('shown');
+      barEls[shown].classList.add('shown', f.found ? 'pass' : 'fail');
+      shown++;
+      document.getElementById('scan-progress').textContent = `${shown} of ${data.fields.length} checked`;
+      setTimeout(step, 420);
+    };
+    setTimeout(step, 300);
+  });
+}
+
+function showVerdict(data) {
+  document.getElementById('verdict-case').textContent = data.caseId;
+  document.getElementById('verdict-date').textContent = new Date(data.generatedAt).toLocaleString('en-IN', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' }).toUpperCase();
+
+  const box = document.getElementById('stamp-box');
+  box.className = 'stamp-box ' + (data.compliant ? 'pass' : 'fail');
+  document.getElementById('stamp-title').textContent = data.compliant ? 'Compliant' : 'Violations found';
+  document.getElementById('stamp-sub').textContent = `R-6(1) PACKAGED · ${data.missing} GAP${data.missing === 1 ? '' : 'S'}`;
+
+  const rowsWrap = document.getElementById('verdict-rows');
+  rowsWrap.innerHTML = '';
+  data.fields.forEach((f, i) => {
+    rowsWrap.appendChild(buildRow(f, true));
+    if (i < data.fields.length - 1) rowsWrap.appendChild(el('rowdiv', 'rowdiv'));
+  });
+
+  document.getElementById('verdict-summary').textContent = data.compliant
+    ? 'All 7 required declarations present.'
+    : `${data.missing} of 7 required declarations missing.`;
+
+  showScreen('screen-verdict');
+  runLucide();
+}
+
+document.getElementById('scan-btn').addEventListener('click', () => {
+  const text = document.getElementById('listing-input').value.trim();
+  if (!text) {
+    const err = document.getElementById('intake-err');
+    err.textContent = 'Paste some listing text first.';
+    err.style.display = 'block';
+    return;
+  }
+  runScan(text);
+});
+
+document.getElementById('new-scan-btn').addEventListener('click', () => {
+  document.getElementById('listing-input').value = '';
+  showScreen('screen-intake');
+});
+</script>
+</body>
+</html>

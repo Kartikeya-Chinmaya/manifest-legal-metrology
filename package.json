@@ -1,0 +1,9 @@
+{
+  "name": "manifest-legal-metrology",
+  "private": true,
+  "version": "1.0.0",
+  "description": "UI mockups + a working demo for MANIFEST, a Legal Metrology e-commerce compliance scanner",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
