@@ -1,0 +1,12 @@
+:root{
+/* No soft SaaS shadows. Two mechanisms only:
+   1) hard offset — a plate sitting on a plate
+   2) inset bevel — a stamped / punched recess */
+--shadow-none:none;
+--shadow-hard-sm:2px 2px 0 rgba(19,17,16,.34);
+--shadow-hard-md:4px 4px 0 rgba(19,17,16,.30);
+--shadow-hard-lg:7px 7px 0 rgba(19,17,16,.26);
+--shadow-inset:inset 1px 1px 0 rgba(19,17,16,.20),inset -1px -1px 0 rgba(255,255,255,.35);
+--shadow-punch:inset 0 2px 4px rgba(19,17,16,.35);
+--shadow-lift-hover:5px 5px 0 rgba(19,17,16,.34);
+}

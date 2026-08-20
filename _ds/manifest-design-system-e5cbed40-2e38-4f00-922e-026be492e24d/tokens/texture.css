@@ -1,0 +1,16 @@
+:root{
+/* Paths are relative to this file (tokens/). If you relocate styles.css,
+   re-point these two urls. */
+--texture-metal:url("../assets/textures/metal-plate.jpg"); /* @kind other */
+--texture-metal-dark:url("../assets/textures/metal-plate-dark.jpg"); /* @kind other */
+--texture-burn:url("../assets/textures/burnt-wood.jpg"); /* @kind other */
+
+--texture-metal-size:1162px 852px;
+--texture-burn-size:cover;
+
+/* blend + veil values used to sit UI on top of the plate */
+--plate-blend:multiply; /* @kind other */
+--veil-light:rgba(232,228,220,.62);
+--veil-heavy:rgba(232,228,220,.86);
+--veil-ink:rgba(19,17,16,.78);
+}

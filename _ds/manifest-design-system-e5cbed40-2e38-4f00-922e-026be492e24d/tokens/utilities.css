@@ -1,0 +1,19 @@
+/* MANIFEST utilities. Small, literal, no framework. */
+html{-webkit-text-size-adjust:100%}
+body.mf-body{margin:0;background-color:var(--steel-200);background-image:var(--texture-metal);background-size:var(--texture-metal-size);background-repeat:repeat;color:var(--text-primary);font-family:var(--font-sans);font-size:var(--body-md);line-height:var(--body-leading)}
+::selection{background:var(--selection-bg);color:var(--selection-fg)}
+a{color:var(--text-link);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}
+a:hover{color:var(--text-link-hover);text-decoration-thickness:2px}
+
+/* full-bleed scratched plate, for any container */
+.mf-plate{background-color:var(--steel-200);background-image:var(--texture-metal);background-size:var(--texture-metal-size);background-repeat:repeat}
+.mf-plate-dark{background-color:var(--ink-800);background-image:var(--texture-metal-dark);background-size:var(--texture-metal-size);background-repeat:repeat;color:var(--text-inverse)}
+
+/* burnt-wood texture fill for display type */
+.mf-burn{font-family:var(--font-display);text-transform:uppercase;line-height:var(--display-leading);letter-spacing:var(--display-tracking);background-image:var(--texture-burn);background-size:120% auto;background-position:center 38%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;filter:url(#mf-burn-edge) drop-shadow(0 1px 0 rgba(19,17,16,.45))}
+.mf-burn-flat{font-family:var(--font-display);text-transform:uppercase;line-height:var(--display-leading);letter-spacing:var(--display-tracking);background-image:var(--texture-burn);background-size:120% auto;background-position:center 38%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+
+/* stamped mono label */
+.mf-label{font-family:var(--font-mono);font-size:var(--label-size);font-weight:var(--label-weight);letter-spacing:var(--label-tracking);text-transform:uppercase;color:var(--text-muted)}
+.mf-data{font-family:var(--font-mono);font-size:var(--data-md);letter-spacing:var(--data-tracking);color:var(--text-data);font-variant-numeric:tabular-nums}
+.mf-rule{height:0;border:0;border-top:var(--rule-perforated);margin:0}

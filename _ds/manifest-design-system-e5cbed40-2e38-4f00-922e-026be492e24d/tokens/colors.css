@@ -1,0 +1,51 @@
+:root{
+/* --- STAMP INK: near-black, warm, never pure #000 --- */
+--ink-900:#131110;--ink-800:#1E1B19;--ink-700:#2B2724;--ink-600:#3D3833;
+
+/* --- STEEL: neutrals sampled off the scratched-plate reference --- */
+--steel-700:#4E4B47;--steel-600:#6B6862;--steel-500:#87837C;--steel-400:#A29D96;
+--steel-300:#BCB7B0;--steel-200:#D2CEC8;--steel-100:#E2DFDA;--steel-050:#EFEDE9;
+
+/* --- PAPER: docket / form stock laid over the plate --- */
+--paper-100:#E8E4DC;--paper-200:#D8D3C9;--paper-300:#C4BEB2;
+
+/* --- ACCENTS (brand-issued, exact) --- */
+--case-red:#B23A2E;--verified-green:#2E6E4E;--pending-amber:#B8862F;
+/* accent shades: darkened/lightened on the same hue, no new hues */
+--case-red-dark:#7E2820;--case-red-light:#D4594A;
+--verified-green-dark:#1F4E36;--verified-green-light:#448C67;
+--pending-amber-dark:#815D1E;--pending-amber-light:#D6A650;
+/* accent washes: for row tints over metal, kept low-alpha so grain shows */
+--case-red-wash:rgba(178,58,46,.14);
+--verified-green-wash:rgba(46,110,78,.14);
+--pending-amber-wash:rgba(184,134,47,.14);
+
+/* --- SEMANTIC ALIASES --- */
+--text-primary:var(--ink-900);
+--text-secondary:var(--steel-700);
+--text-muted:var(--steel-600);
+--text-inverse:var(--steel-050);
+--text-data:var(--ink-800);
+--text-link:var(--case-red-dark);
+--text-link-hover:var(--case-red);
+
+--surface-plate:var(--steel-200);
+--surface-panel:var(--steel-100);
+--surface-panel-raised:var(--steel-050);
+--surface-docket:var(--paper-100);
+--surface-ink:var(--ink-900);
+--surface-rail:var(--ink-800);
+
+--border-hard:var(--ink-900);
+--border-soft:var(--steel-400);
+--border-rule:var(--steel-500);
+
+--status-fail:var(--case-red);
+--status-pass:var(--verified-green);
+--status-review:var(--pending-amber);
+--status-void:var(--steel-500);
+
+--focus-ring:var(--pending-amber);
+--selection-bg:var(--pending-amber);
+--selection-fg:var(--ink-900);
+}

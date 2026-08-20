@@ -1,0 +1,30 @@
+:root{
+/* families */
+--font-display:"Archivo Black","Arial Black",Impact,sans-serif;
+--font-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+--font-sans:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+
+/* display / headline scale — always uppercase, always tight */
+--display-xxl:88px;--display-xl:64px;--display-lg:44px;--display-md:32px;
+--display-sm:24px;--display-xs:18px;
+--display-leading:0.92;
+--display-tracking:-0.01em;
+
+/* body */
+--body-lg:17px;--body-md:15px;--body-sm:13px;--body-xs:11px;
+--body-leading:1.5;
+--body-leading-tight:1.35;
+
+/* data / mono */
+--data-lg:20px;--data-md:15px;--data-sm:13px;--data-xs:11px;
+--data-leading:1.25;
+--data-tracking:0.02em;
+
+/* stamped labels: mono, uppercase, wide */
+--label-size:11px;
+--label-tracking:0.16em;
+--label-weight:600;
+
+/* weights */
+--weight-regular:400;--weight-medium:500;--weight-semibold:600;--weight-bold:700;
+}

@@ -1,0 +1,16 @@
+:root{
+/* 2px-rooted industrial scale — no soft 8pt rounding */
+--space-0:0px;--space-1:2px;--space-2:4px;--space-3:6px;--space-4:8px;
+--space-5:12px;--space-6:16px;--space-7:20px;--space-8:24px;--space-9:32px;
+--space-10:40px;--space-11:56px;--space-12:80px;--space-13:120px;
+
+/* component metrics */
+--control-h-sm:26px;--control-h-md:34px;--control-h-lg:44px;
+--control-pad-x:14px;
+--panel-pad:16px;
+--panel-pad-lg:24px;
+--row-h:38px;
+--gutter:16px;
+--page-max:1280px;
+--rail-w:216px;
+}

@@ -1,0 +1,17 @@
+:root{
+/* Nothing in MANIFEST is rounded. Radius tokens exist only to be zero. */
+--radius-0:0px;
+--radius-stamp:0px;
+
+--stroke-hairline:1px;
+--stroke-hard:1.5px;
+--stroke-heavy:2px;
+--stroke-slab:4px;
+
+--border-1:1px solid var(--border-hard);
+--border-1-soft:1px solid var(--border-soft);
+--border-2:2px solid var(--border-hard);
+--border-slab:4px solid var(--ink-900);
+--rule-dashed:1px dashed var(--steel-500);
+--rule-perforated:1px dashed var(--ink-900);
+}
